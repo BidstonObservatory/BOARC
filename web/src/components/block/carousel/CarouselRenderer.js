@@ -31,7 +31,8 @@ const CarouselRenderer = ({ value }) => {
                     </svg>
                 </button>
                 <Swiper onSwiper={(swiper) => setSwiper(swiper)} loop={true}>
-                    {value.content.map((slide) => {
+	          {value && value.content && value.content.length > 0 ? (
+                    value.content.map((slide) => {
                         return (
                             <SwiperSlide key={slide._key}>
                                 <div className={style.container}>
@@ -44,8 +45,9 @@ const CarouselRenderer = ({ value }) => {
                                     />
                                 </div>
                             </SwiperSlide>
-                        );
-                    })}
+                        )
+                    })
+		  ) : null}
                 </Swiper>
                 <button
                     className={style.arrowRight}
